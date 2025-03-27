@@ -53,11 +53,13 @@ Alert to TheHive → Email Analyst
 ```text
 SOC-automation-LAB/
 ├── README.md
-├── TheHive_Payload.txt
-├── workflow_export.json
-├── Wazuhdetection.png
-├── hashcaptured.png
-├── virustotalreceivedhash.png
+├── artifacts/
+│   ├── TheHive_Payload.txt
+│   └── workflow_export.json
+├── screenshots/
+│   ├── Wazuhdetection.png
+│   ├── hashcaptured.png
+│   ├── virustotalreceivedhash.png
 ```
 ---
 
@@ -102,14 +104,13 @@ SOC-automation-LAB/
 }
 ```
 ---
+## 🖼️ Screenshots
+**Wazuh Detects Mimikatz**
 
-## 📸 Demo Screenshots
+> ![Wazuh Detection](screenshots/Wazuhdetection.png)
 
-**1. Wazuh detection trigger**
-![Wazuh detection](./Wazuhdetection.png)
+**Regex Successfully Captures SHA256**
+> ![Hash Captured](screenshots/hashcaptured.png)
 
-**2. SHA256 hash extraction in Shuffle**
-![Hash captured](./hashcaptured.png)
-
-**3. VirusTotal response confirming malicious hash**
-![VirusTotal Result](./virustotalreceivedhash.png)
+**VirusTotal Receives the Hash**
+> ![VirusTotal Result](screenshots/virustotalreceivedhash.png)
