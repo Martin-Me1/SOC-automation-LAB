@@ -1,1 +1,12 @@
-
+{
+  "title": "Mimikatz Detected",
+  "description": "Credential dumping activity detected on {{ exec.all_fields.data.win.system.computer }}",
+  "summary": "Process ID: {{ exec.all_fields.data.win.system.processID }} | Command: {{ exec.all_fields.data.win.eventdata.commandLine }}",
+  "severity": 2,
+  "tlp": 2,
+  "pap": 2,
+  "tags": ["Mimikatz", "T1003"],
+  "source": "Wazuh",
+  "sourceRef": "100002",
+  "status": "New"
+}
