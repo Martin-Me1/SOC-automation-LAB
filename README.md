@@ -13,7 +13,7 @@ Design and implement a real time detection and automated response workflow for c
 - Performed live testing and validation using real attack tools in a controlled cloud lab
 
 **### Tools Used**
-Tools Used: Shuffle, Wazuh, DigitalOcean (CSP), Sysmon, Mimikatz, TheHive, VirusTotal
+Shuffle, Wazuh, DigitalOcean (CSP), Sysmon, Mimikatz, TheHive, VirusTotal
 
 - Shuffle (SOAR platform) for automation workflows and integrations
 - Wazuh (SIEM + Host-based IDS) for rule creation, alerting, and active response
@@ -24,10 +24,10 @@ Tools Used: Shuffle, Wazuh, DigitalOcean (CSP), Sysmon, Mimikatz, TheHive, Virus
 - VirusTotal API for hash enrichment
 - SquareX (disposable email) to simulate SOC notifications
 
-1. Initial Setup
+**1. Initial Setup**
 Set up a cloud server using DigitalOcean and installed Wazuh and TheHive. Deployed a Windows 10 VM with Sysmon and Mimikatz for simulating attacker behavior.
 
-2. Writing Custom Wazuh Rules
+**2. Writing Custom Wazuh Rules**
 Created a custom rule in local_rules.xml to detect Mimikatz using the originalFileName field:
 
 <rule id="100002" level="15">
@@ -42,7 +42,7 @@ Created a custom rule in local_rules.xml to detect Mimikatz using the originalFi
 
 This targets the actual metadata in the binary rather than just the file name. I renamed mimikatz.exe to thisissupersafe.exe and it still triggered the alert.
 
-3. Feeding in Sysmon Data
+**3. Feeding in Sysmon Data**
 Configured ossec.conf to enable Sysmon log collection:
 
 <localfile>
@@ -52,14 +52,14 @@ Configured ossec.conf to enable Sysmon log collection:
 
 This allowed Wazuh to collect detailed logs about process execution, which was key for tracking attacker behavior.
 
-4. Expanding Visibility
+**4. Expanding Visibility**
 Added the following index pattern to Kibana to make sure nothing was missed:
 
 wazuh-archives-*
 
 This ensures visibility into full archived traffic including rule matches and raw event content.
 
-5. Connecting Shuffle with Webhooks
+**5. Connecting Shuffle with Webhooks**
 Generated a webhook in Shuffle and added it to Wazuh’s ossec.conf:
 
 <integration>
@@ -71,14 +71,14 @@ Generated a webhook in Shuffle and added it to Wazuh’s ossec.conf:
 
 This was configured to only send high-level alerts (15) tied to our Mimikatz rule.
 
-6. Live Alert Testing
+**6. Live Alert Testing**
 Executed Mimikatz on the Windows VM:
 
 .\mimikatz.exe "privilege::debug" "log" "sekurlsa::logonpasswords" "exit"
 
 Confirmed the alert hit Wazuh, triggered the webhook, and was received by Shuffle.
 
-7. Building the Automation Workflow
+**7. Building the Automation Workflow**
 Designed a modular workflow:
 
 Mimikatz alert hits Shuffle
@@ -91,14 +91,14 @@ If malicious, an alert is created in TheHive
 
 Optional email is sent to the SOC analyst
 
-8. Hash Extraction with Regex
+**8. Hash Extraction with Regex**
 Used this regex in Shuffle's Regex Capture Group node:
 
 SHA256=([0-9A-Fa-f]{64})
 
 It successfully isolated the SHA256 hash from the Wazuh event logs.
 
-9. VirusTotal Integration
+**9. VirusTotal Integration**
 Queried the hash using VirusTotal’s API:
 
 GET https://www.virustotal.com/api/v3/files/{sha256_hash}
@@ -106,7 +106,7 @@ Authorization: Bearer <API_KEY>
 
 Received enriched results, including whether the hash was flagged as malicious.
 
-10. Creating Rich Alerts in TheHive
+**10. Creating Rich Alerts in TheHive**
 Used Shuffle to push alerts into TheHive using the following body:
 
 {
@@ -123,14 +123,14 @@ Used Shuffle to push alerts into TheHive using the following body:
   "status": "New"
 }
 
-11. Firewall Rule Update for Testing
+**11. Firewall Rule Update for Testing**
 Opened up port 9000 on DigitalOcean firewall to allow Shuffle to send alerts to TheHive:
 
 Port: 9000
 Protocol: TCP
 Sources: All IPv4
 
-12. Email Integration with Shuffle
+**12. Email Integration with Shuffle**
 Used Shuffle’s email app to send alerts:
 
 {
@@ -141,7 +141,7 @@ Used Shuffle’s email app to send alerts:
 
 Used SquareX disposable email to simulate SOC notifications.
 
-13. Kicking Off Active Response
+**13. Kicking Off Active Response**
 Used Shuffle to call Wazuh’s API and trigger a firewall drop:
 
 curl -X POST https://<wazuh_ip>:55000/active-response/run \
@@ -150,7 +150,7 @@ curl -X POST https://<wazuh_ip>:55000/active-response/run \
 
 Tested it by pinging the blocked IP before and after the command — confirmed it was dropped.
 
-14. Analyst-Driven Blocking with User Input
+**14. Analyst-Driven Blocking with User Input**
 Added a user prompt step in Shuffle that asked:
 
 Would you like to block the source IP {{ malicious_ip }}?
