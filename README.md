@@ -19,7 +19,7 @@ The detection starts at the endpoint and flows through Wazuh, Shuffle, VirusTota
 
 Mimikatz Execution → Wazuh Alert → Shuffle Webhook Trigger →  
 Regex Extraction (SHA256) → VirusTotal Reputation Check →  
-Alert to TheHive → Email Analyst → [Optional] Wazuh IP Block
+Alert to TheHive → Email Analyst → Wazuh IP Block
 
 ---
 
