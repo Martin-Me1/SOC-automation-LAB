@@ -48,21 +48,16 @@ Regex Extraction (SHA256) → VirusTotal Reputation Check →
 Alert to TheHive → Email Analyst
 
 ---
+## 📁 File Structure
 
 ```text
 SOC-automation-LAB/
 ├── README.md
-├── wazuh/
-│   └── local_rules.xml
-├── shuffle/
-│   └── workflow_export.json
-├── thehive/
-│   └── alert_payload.json
-├── screenshots/
-│   ├── Wazuhdetection.png
-│   ├── hashcaptured.png
-│   └── virustotalreceivedhash.png
-
+├── TheHive_Payload.txt
+├── workflow_export.json
+├── Wazuhdetection.png
+├── hashcaptured.png
+├── virustotalreceivedhash.png
 ```
 ---
 
