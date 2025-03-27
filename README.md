@@ -98,3 +98,15 @@ mimikatz-detection-response/
   "status": "New"
 }
 ```
+---
+
+## 📸 Demo Screenshots
+
+**1. Wazuh detection trigger**
+![Wazuh detection](./Wazuhdetection.png)
+
+**2. SHA256 hash extraction in Shuffle**
+![Hash captured](./hashcaptured.png)
+
+**3. VirusTotal response confirming malicious hash**
+![VirusTotal Result](./virustotalreceivedhash.png)
