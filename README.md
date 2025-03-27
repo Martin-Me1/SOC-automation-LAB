@@ -15,6 +15,21 @@ The detection starts at the endpoint and flows through Wazuh, Shuffle, VirusTota
 
 ---
 
+## 📚 What I Learned
+
+- Built a fully automated blue team workflow from scratch
+- Wrote custom detection rules in Wazuh using regex on metadata (`originalFileName`)
+- Understood attacker evasion techniques (renaming Mimikatz to `thisissupersafe.exe`)
+- Parsed event logs using Sysmon + Wazuh + custom filters
+- Extracted SHA256 hashes using regex in Shuffle: `SHA256=([0-9A-Fa-f]{64})`
+- Integrated with VirusTotal’s API to pull hash reputation data
+- Created structured alert payloads for TheHive with TLP/PAP/severity/tags
+- Used SquareX to simulate SOC email alerts securely
+- Practiced port forwarding/ngrok/firewall configs on DigitalOcean
+- Learned how to simulate Mimikatz on a VM in a safe lab
+
+---
+
 ## Startup Flow
 
 Mimikatz Execution → Wazuh Alert → Shuffle Webhook Trigger →  
