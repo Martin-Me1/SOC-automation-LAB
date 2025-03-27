@@ -47,21 +47,22 @@ Mimikatz Execution → Wazuh Alert → Shuffle Webhook Trigger →
 Regex Extraction (SHA256) → VirusTotal Reputation Check →  
 Alert to TheHive → Email Analyst
 
----
 ## 📁 File Structure
 
 ```text
 SOC-automation-LAB/
 ├── README.md
+├── Workflow
 ├── artifacts/
 │   ├── TheHive_Payload.txt
 │   └── workflow_export.json
 ├── screenshots/
-│   ├── Wazuhdetection.png
+│   ├── wazuhdetection.png
 │   ├── emailexample.png
 │   ├── hashcaptured.png
 │   ├── virustotalreceivedhash.png
 │   └── workflow.png
+
 ```
 ---
 
