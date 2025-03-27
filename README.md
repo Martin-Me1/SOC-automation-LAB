@@ -17,8 +17,8 @@ The detection starts at the endpoint and flows through Wazuh, Shuffle, VirusTota
 
 ## 📚 What I Learned
 
-- Built a fully automated blue team workflow from scratch
-- Wrote custom detection rules in Wazuh using regex on metadata (`originalFileName`)
+- How to build a fully automated blue team workflow from scratch
+- Writing custom detection rules in Wazuh using regex on metadata (`originalFileName`)
 - Understood attacker evasion techniques (renaming Mimikatz to `thisissupersafe.exe`)
 - Parsed event logs using Sysmon + Wazuh + custom filters
 - Extracted SHA256 hashes using regex in Shuffle: `SHA256=([0-9A-Fa-f]{64})`
