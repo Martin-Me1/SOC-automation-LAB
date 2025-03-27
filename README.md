@@ -45,28 +45,25 @@ The detection starts at the endpoint and flows through Wazuh, Shuffle, VirusTota
 
 Mimikatz Execution → Wazuh Alert → Shuffle Webhook Trigger →  
 Regex Extraction (SHA256) → VirusTotal Reputation Check →  
-Alert to TheHive → Email Analyst → Wazuh IP Block
+Alert to TheHive → Email Analyst
 
 ---
 
-## File Structure
-
 ```text
-mimikatz-detection-response/
+SOC-automation-LAB/
+├── README.md
 ├── wazuh/
-│   ├── local_rules.xml
-│   └── ossec.conf
+│   └── local_rules.xml
 ├── shuffle/
 │   └── workflow_export.json
 ├── thehive/
 │   └── alert_payload.json
-├── mimikatz_demo/
-│   └── run_mimikatz.ps1
 ├── screenshots/
-│   └── *.png
-└── README.md
-```
+│   ├── Wazuhdetection.png
+│   ├── hashcaptured.png
+│   └── virustotalreceivedhash.png
 
+```
 ---
 
 ## Key Components
