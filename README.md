@@ -12,7 +12,7 @@ Design and implement a real time detection and automated response workflow for c
 - Created actionable SOC alerts and notifications based on MITRE ATT&CK techniques
 - Performed live testing and validation using real attack tools in a controlled cloud lab
 
-**### Tools Used**
+**### Tools Used:**
 Shuffle, Wazuh, DigitalOcean (CSP), Sysmon, Mimikatz, TheHive, VirusTotal
 
 - Shuffle (SOAR platform) for automation workflows and integrations
