@@ -9,10 +9,21 @@
 
 ## Architecture
 
-The goal was to detect credential dumping in real-time and automate incident response actions. This includes alert triage, threat intelligence enrichment, and active blocking of malicious sources.
+The goal was to detect credential dumping in real time and automate escalation via email directly to SOC analysts. This includes alert triage, threat intelligence enrichment, and active blocking of malicious sources.
 
 The detection starts at the endpoint and flows through Wazuh, Shuffle, VirusTotal, and TheHive. Each system plays a distinct role in visibility, automation, and triage.
 
+---
+## 🔧 Tools & Stack
+
+- Shuffle (SOAR Platform)
+- Wazuh (SIEM/IDS)
+- Sysmon (Windows system logging)
+- Mimikatz (Attack simulation)
+- VirusTotal API (Threat Intel)
+- TheHive (Alerting & Triage)
+- DigitalOcean (Cloud infrastructure)
+- SquareX (Disposable email for alert simulation)
 ---
 
 ## 📚 What I Learned
