@@ -1,4 +1,4 @@
-# 🛡️ Mimikatz Detection & Response Workflow
+# 🛡️ SOC automation LAB
 
 ![SOAR](https://img.shields.io/badge/SOAR-Shuffle-blue)
 ![SIEM](https://img.shields.io/badge/SIEM-Wazuh-yellow)
