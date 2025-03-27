@@ -58,8 +58,10 @@ SOC-automation-LAB/
 │   └── workflow_export.json
 ├── screenshots/
 │   ├── Wazuhdetection.png
+│   ├── emailexample.png
 │   ├── hashcaptured.png
 │   ├── virustotalreceivedhash.png
+│   └── workflow.png
 ```
 ---
 
@@ -104,13 +106,23 @@ SOC-automation-LAB/
 }
 ```
 ---
-## 🖼️ Screenshots
-**Wazuh Detects Mimikatz**
 
+### 🖼️ Example Screenshots
+
+md
+## 🖼️ Screenshots
+
+**🔁 Full Automation Workflow**
+> ![Workflow](screenshots/workflow.png)
+
+**🛡️ Mimikatz Detection via Wazuh**
 > ![Wazuh Detection](screenshots/Wazuhdetection.png)
 
-**Regex Successfully Captures SHA256**
+**🧠 SHA256 Regex Extraction**
 > ![Hash Captured](screenshots/hashcaptured.png)
 
-**VirusTotal Receives the Hash**
-> ![VirusTotal Result](screenshots/virustotalreceivedhash.png)
+**🌐 VirusTotal Hash Enrichment**
+> ![VirusTotal](screenshots/virustotalreceivedhash.png)
+
+**📧 Email Alert to Analyst**
+> ![Email](screenshots/emailexample.png)
