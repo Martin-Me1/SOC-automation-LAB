@@ -3,7 +3,7 @@
 **##Objective**
 Design and implement a real time detection and automated response workflow for credential dumping attacks using open source tools. The goal was to detect Mimikatz activity on a Windows host, test reputation via VirusTotal, and from thehive escalate it to a SOC analyst via email, and optionally trigger a firewall block through Wazuh — all orchestrated using Shuffle automation.
 
-**###Skills Learned**
+**###Skills Learned```**
 
 - Built and automated a complete detection and response pipeline using Shuffle, Wazuh, and TheHive
 - Wrote custom detection rules in Wazuh to identify Mimikatz execution using binary metadata
