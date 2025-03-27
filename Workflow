@@ -1,0 +1,65 @@
+🚀 The Journey
+1.Cloud Lab Deployment
+Spun up a DigitalOcean server, dropped in Wazuh + TheHive, and deployed a Windows 10 VM with Sysmon + Mimikatz for controlled chaos.
+
+2.The Snitch (Custom Wazuh Rule)
+Wrote a rule that looks inside the binary for the real name—even if Mimikatz tries to go incognito:
+<field name="win.eventdata.originalFileName" type="pcre2">(?i)mimikatz\.exe</field>
+✅ Even if we rename this to thisissupersafe.exe, it will still get caught
+
+3.Feeding the Beast (Sysmon Logs)
+Enabled Sysmon data in Wazuh via ossec.conf to log every shady move.
+
+4. Full Vision Mode
+Plugged in Kibana’s wazuh-archives-* index to unlock raw logs and rule matches. No attacker slips by.
+
+5. Webhook Magic
+Connected Wazuh to Shuffle with a webhook for high-severity alerts:
+<level>15</level>
+<rule_id>100002</rule_id>
+
+6. Live Fire Test
+Ran this on the Windows VM:
+.\mimikatz.exe "privilege::debug" "log" "sekurlsa::logonpasswords" "exit"
+💥 Alert fired, webhook triggered, Shuffle picked it up like a boss.
+
+7.Building the Workflow
+The flow:
+1.Mimikatz alert hits Shuffle
+2.Regex extracts SHA256
+3.VirusTotal checks the hash
+4.If malicious → alert goes to TheHive
+5.SOC gets email (and coffee(maybe))
+
+8.Regex Wizardry
+Extracted the SHA256 hash cleanly:
+SHA256=([0-9A-Fa-f]{64})
+
+9. VirusTotal Intel Plug-In
+Queried VirusTotal like this:
+GET https://www.virustotal.com/api/v3/files/{sha256_hash}
+🔍 Got results: clean or mean.
+
+10.TheHive Integration
+Pushed detailed alerts to TheHive:
+"title": "Mimikatz Detected",
+"description": "Detected on host {{ host }} by user {{ user }}",
+"tags": ["T1003"],
+"severity": 2
+
+11.Firewall Testing
+Opened port 9000 so Shuffle could chat with TheHive.
+
+12. Emailing the SOC
+Used SquareX + Shuffle to send alerts like:
+“Hey, Mimikatz is back. Check host {{ computer }} ASAP.”
+
+13.Dropping the Hammer (Firewall Block)
+Hit the Wazuh API to block IPs:
+curl -X POST ... "command":"firewalldrop"
+✔️ Confirmed: pre-block → ping OK; post-block → ping denied.
+
+🧑‍💻 SOC Approval Loop
+Added a Shuffle prompt:
+“Block source IP {{ malicious_ip }}?” Only if the analyst says "Yes", the drop goes live.
+
